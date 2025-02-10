@@ -29,7 +29,7 @@ public class HdfsClient {
     public static void init() throws URISyntaxException, IOException, InterruptedException {
 
         // 1.连接集群的nameNode地址
-        URI uri = new URI("hdfs://hadoop202:8020");
+        URI uri = new URI("hdfs://hadoop01:8020");
         // 2.创建配置文件
         Configuration configuration = new Configuration();
         configuration.set("dfs.replication", "2"); // 代码中的配置优先级最高
