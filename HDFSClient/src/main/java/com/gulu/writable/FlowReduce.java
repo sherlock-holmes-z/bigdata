@@ -11,18 +11,21 @@ import java.io.IOException;
  */
 public class FlowReduce extends Reducer<Text, FlowBean, Text, FlowBean> {
 
+    FlowBean flowBeanSum = new FlowBean();
+
 
     @Override
     protected void reduce(Text key, Iterable<FlowBean> values, Reducer<Text, FlowBean, Text, FlowBean>.Context context) throws IOException, InterruptedException {
 
-        FlowBean flowBeanSum = new FlowBean();
+        long upFlow = 0, downFlow = 0;
         for (FlowBean flowBean : values) {
-            flowBeanSum.setUpFlow(flowBeanSum.getUpFlow() + flowBean.getUpFlow());
-            flowBeanSum.setDownFlow(flowBeanSum.getDownFlow() + flowBean.getDownFlow());
+            upFlow += flowBean.getUpFlow();
+            downFlow += flowBean.getDownFlow();
         }
 
-        flowBeanSum.setSumFlow(flowBeanSum.getUpFlow() + flowBeanSum.getDownFlow());
+        flowBeanSum.setUpFlow(upFlow);
+        flowBeanSum.setDownFlow(downFlow);
+        flowBeanSum.setSumFlow(upFlow + downFlow);
         context.write(key, flowBeanSum);
-
     }
 }
