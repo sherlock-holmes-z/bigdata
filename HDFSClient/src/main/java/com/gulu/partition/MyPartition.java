@@ -10,10 +10,20 @@ import org.apache.hadoop.mapreduce.Partitioner;
  * @author chocolate
  * 2025/2/17 16:56
  */
-public class MyPartition extends Partitioner<Text, IntWritable> {
+public class MyPartition extends Partitioner<Text, AreaBean> {
 
     @Override
-    public int getPartition(Text text, IntWritable intWritable, int i) {
-        return 0;
+    public int getPartition(Text text, AreaBean areaBean, int i) {
+        String area = text.toString();
+        if ("北京".equals(area)) {
+            return 0;
+        } else if ("上海".equals(area)) {
+            return 1;
+        } else if ("广州".equals(area)) {
+            return 2;
+        } else if ("深圳".equals(area)) {
+            return 3;
+        }
+        return 4;
     }
 }

@@ -28,20 +28,20 @@ public class PartitionDriver {
 
         job.setMapperClass(PartitionMapper.class);
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(IntWritable.class);
+        job.setMapOutputValueClass(AreaBean.class);
 
         job.setReducerClass(PartitionReduce.class);
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(AreaBean.class);
 
         // 设置自定义partition
         job.setPartitionerClass(MyPartition.class);
         // 设置的reduce数量不能低于partition里的分区量，否则分区完之后，多余的分区不知道该去哪个reduce处理
         // 没有处理partition的reduce会输出一个空文件，reduceTask只能多不能少
-        job.setNumReduceTasks(1);
+        job.setNumReduceTasks(5);
 
-        FileInputFormat.setInputPaths(job, new Path("D:\\test\\hadoop\\input\\partition.txt"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\test\\hadoop\\output\\partition4"));
+        FileInputFormat.setInputPaths(job, new Path("src/main/resources/partition/partition1.txt"));
+        FileOutputFormat.setOutputPath(job, new Path("src/main/resources/partition/out1"));
 
         boolean b = job.waitForCompletion(true);
         System.exit(b ? 0 : 1);
