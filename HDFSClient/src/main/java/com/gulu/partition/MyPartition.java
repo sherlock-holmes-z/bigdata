@@ -5,6 +5,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
 /**
+ *
+ * 分区
  * 第一个参数是mapper输出的k。第二个输出的v
  *
  * @author chocolate

@@ -1,0 +1,10 @@
+shanghai 20 100
+beijing 20 200
+shanghai 19 10
+shanghai 30 20
+beijing 25 10
+beijing 60 100
+asia 12 10
+asia 10 10
+tokyo 11 20
+canada 22 15
