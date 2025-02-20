@@ -34,7 +34,7 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        // 设置combiner
+        // 设置combiner，在mapTask中提前聚合
         job.setCombinerClass(WordCombiner.class);
 
         FileInputFormat.setInputPaths(job, new Path("src/main/resources/combiner/combiner.txt"));
