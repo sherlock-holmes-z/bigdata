@@ -40,10 +40,8 @@ public class TableBean implements Writable {
     public String toString() {
         return "TableBean{" +
                 "orderId='" + orderId + '\'' +
-                ", pId='" + pId + '\'' +
                 ", pName='" + pName + '\'' +
                 ", num=" + num +
-                ", type='" + type + '\'' +
                 '}';
     }
 
