@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * join在reduce端处理，reduce压力较大
+ *
  * @author chocolate
  * 2025/2/20 17:13
  */
