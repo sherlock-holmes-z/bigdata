@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author Gollum
- * @date 2025-03-26 22:46
+ * @author chocolate
+ * 2025/3/27 15:01
  */
-public class Spark01_Env {
+public class Spark02_RDD_Memory_Partition_Data {
     public static void main(String[] args) {
 
         // 1.创建配置对象
@@ -19,9 +19,15 @@ public class Spark01_Env {
                 .setMaster("local")
                 .setAppName("sparkCore");
 
-        // 2. 创建sparkContext
+//        conf.set("spark.default.parallelism","3");
+
         final JavaSparkContext sc = new JavaSparkContext(conf);
 
+        List<Integer> list = Arrays.asList(1,2,3,4,5);
+
+        JavaRDD<Integer> rdd = sc.parallelize(list,1);
+        System.out.println(rdd.getNumPartitions());
+        rdd.saveAsTextFile("src/main/resources/memory_out1");
 
         sc.close();
     }
